@@ -1,0 +1,68 @@
+***RELAXATION METHODS FOR ELECTROSTATICS***
+
+(this README is easier to view in full screen for formatting)
+
+PURPOSE: 
+This code will calculate the electric potential of 4 unique geometries in 2 dimensions, and a point charge in 3 dimensions,
+as well as the electric fields of each of these geometries respectively. The data produced by this code
+can then be analyzed in a language like Mathematica to achieve physical descriptions for the results.
+
+
+RUNNING THE CODE:
+In order to run this code the user first need to make sure they are
+in the correct directory where they stored this program. 
+
+Once the user is in the correct directory they can then proceed to type:
+
+	make relax
+
+into the command line of the terminal. This will compile the code for the user. 
+
+Now the user can run the code by entering:
+
+	./relax
+
+into the command line. The user will then be prompted for specific inputs:
+	
+	1st user input : Dimension of Matrix 
+		**************enter only real positive even integers from 10 to 1000****************
+		
+		******because the 3 dimensional array reads in a the beginning of the code
+	        	      if you enter in larger than 63 then the program will give a segmentation fault***
+	
+
+	2nd user input: Desired Relaxation Method to be used 
+		******enter only 1, 2, 3, or 4 other inputs will result in an error******* 
+
+	
+	3rd user input : Desired geometry of system to be used
+		******enter only 1, 2, 3, or 4 other inputs will result in an error******* 
+
+PRINTOUT:
+The code will print out the electric potential to a file called laplace.txt in an array of numbers (1 element per row).
+The code will also print out the electric field components in the x and y directions (2 elements per row).
+In the terminal window the user will also be able to see how many iterations the code took to run in order to reach convergence,
+as well as how long (in seconds) the code took to run.
+
+GENERATE FIGURES:
+If you have access to Mathematica, when reading in the data for the electric potential you can simply input:
+
+	SetDirectory["address of data file laplace.txt"]
+	data = Partition[ReadList["laplace.txt", Number], 20];
+
+	picture1 = ListContourPlot[data, ContourLabels -> Automatic, 
+  	PlotLegends -> BarLegend[{"Rainbow", {0, 100}}]]
+
+	Export["picture1.pdf", picture1]
+
+To plot the electric field lines you can simply input:
+
+	SetDirectory["address of data file efield.txt"]
+	data1 = ReadList["efield.txt", {Number, Number, Number, Number}];
+
+	Show[ListVectorPlot[data1]]
+
+These methods will give you a plot for both the electric potential and electric field if you are using Mathematica.
+***If you have any issues with the code, contact:
+Robert Wilson Stewart
+gswilson6@gmail.com	
