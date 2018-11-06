@@ -8,7 +8,7 @@ as well as the electric fields of each of these geometries respectively. The dat
 can then be analyzed in a language like Mathematica to achieve physical descriptions for the results.
 
 
-RUNNING THE CODE:
+RUNNING THE CODE (linux command terminal):
 In order to run this code the user first need to make sure they are
 in the correct directory where they stored this program. 
 
